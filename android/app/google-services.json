@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595761445863",
+    "project_id": "auto-light-feedback",
+    "storage_bucket": "auto-light-feedback.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595761445863:android:3048835cfa17adb4c35b42",
+        "android_client_info": {
+          "package_name": "com.automated_streetlight_feedback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595761445863-h0tqpegc1ppmbtdlo4baji2evlnc1tdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm3i0OZKxEc9RC4ApeL3mJsai5IAQLRIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595761445863-h0tqpegc1ppmbtdlo4baji2evlnc1tdp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
