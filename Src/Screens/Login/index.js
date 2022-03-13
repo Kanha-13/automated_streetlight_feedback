@@ -9,11 +9,30 @@ const Login = ({ path, navigate }) => {
     const goBack = () => {
         setLoginType(-1)
     }
+    const checkUser = async (number) => {
+        const res = await fetch(`http://192.168.29.59:8002/user/${number}`)
+        const userExist = await res.json()
+        if (userExist) {
+            if (userExist.employeId) {
+                navigate('TechnicianHome')
+            } else {
+                navigate('UserHome')
+            }
+        } else {
+            if (LoginType) {
+                console.log("deteail not available")
+                navigate("TechnicianInfo")
+            } else {
+                console.log("deteail not available")
+                navigate("UserInfo")
+            }
+        }
+    }
     useEffect(() => {
         try {
             auth().onAuthStateChanged((user) => {
                 if (user) {
-                    navigate('UserHome')
+                    checkUser(user.phoneNumber)
                 }
                 else {
                     setLoginType(-1)

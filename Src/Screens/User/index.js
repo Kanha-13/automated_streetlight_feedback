@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import auth from '@react-native-firebase/auth';
+import Geolocation from "@react-native-community/geolocation";
 const UserHome = ({ navigate }) => {
-    const handleSignout = () => {
-        try {
-            auth().signOut()
-            navigate('Login')
-        } catch (error) {
-            console.log("Signout error")
-            navigate('Login')
-        }
-    };
+    // Geolocation.getCurrentPosition(data => {
+    //     console.log(data.coords);
+    // });
+
     return (
-        <View style={{ height: "100%", backgroundColor: "pink" }}>
-            <Text style={{ color: "#000000" }}>User Home</Text>
-            <Pressable onPress={handleSignout} style={{ backgroundColor: 'purple', width: "40%", height: 60, borderRadius: 15, alignItems: "center", justifyContent: "center" }}><Text style={{ color: "#ffffff", fontSize: 22 }}>Sign Out</Text></Pressable>
+        <View style={{ height: "100%", backgroundColor: "white" }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between", marginBottom: 50, height: 60, alignItems: "center" }}>
+                <Pressable onPress={() => {
+                    navigate("Setting")
+                }}><Text style={{ fontSize: 30 }}> 🔴 </Text></Pressable>
+                <Text style={{ color: "#000000", fontSize: 25 }}>User Home</Text>
+                <Pressable onPress={() => {
+                    navigate("Notification")
+                }}><Text style={{ fontSize: 30 }}> 🔔 </Text></Pressable>
+            </View>
+            <Pressable onPress={() => {
+                console.log("pressed")
+                navigate('Camera')
+            }} style={{ backgroundColor: "purple", width: 60, height: 60 }}><Text>Register Complain</Text></Pressable>
         </View>
     );
 }

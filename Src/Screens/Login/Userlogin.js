@@ -3,7 +3,6 @@ import { View, Text, Pressable } from "react-native";
 import MobileNumber from "../../component/MobileNumber";
 import Otp from "../../component/Otp";
 import { sendOtp } from "./api";
-import RNOtpVerify from 'react-native-otp-verify';
 
 const UserLogin = ({ onBack, navigate }) => {
     const [mobileNUmber, setMobileNumber] = useState(null)
