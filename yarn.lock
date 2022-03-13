@@ -1275,11 +1275,14 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz"
   "version" "1.1.0"
 
+<<<<<<< HEAD
 "@react-native-community/geolocation@^2.0.2":
   "integrity" "sha512-tTNXRCgnhJBu79mulQwzabXRpDqfh/uaDqfHVpvF0nX4NTpolpy6mvTRiFg7eWFPGRArsnZz1EYp6rHfJWGgEA=="
   "resolved" "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-2.0.2.tgz"
   "version" "2.0.2"
 
+=======
+>>>>>>> db62d0c8fc395cc3137e629a333ae6b5972e40e8
 "@react-native-firebase/app@^14.5.1", "@react-native-firebase/app@14.5.1":
   "integrity" "sha512-PmoiKU3DBnuaMZ5Nw71qCmDbJMJQJoYknm5gTI+j09iF0PDzzF0t+Qe/lCWEKMrDs6TuYpJvxFoocSFlAF6BHg=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-14.5.1.tgz"

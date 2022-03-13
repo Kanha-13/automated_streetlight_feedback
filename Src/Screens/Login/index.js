@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet, ImageBackground } from "react-native";
 import TechnicianLogin from "./Technicianlogin";
 import UserLogin from "./Userlogin";
 import auth from '@react-native-firebase/auth';
+
+
+const image = { uri: "https://reactjs.org/logo-og.png" }
 
 const Login = ({ path, navigate }) => {
     const [LoginType, setLoginType] = useState(-1)
@@ -44,22 +47,22 @@ const Login = ({ path, navigate }) => {
     }, [])
     return (
         <View style={{
-            backgroundColor: "#FFFFFF", height: '100%',
+            backgroundColor: "#120c6e", height: '100%',
             alignItems: "center"
         }}>{
                 LoginType === -1 &&
                 <>
-                    <Text style={{ color: "#000000", fontSize: 30, marginTop: 200 }}>Login as</Text>
+                    <Text style={{ color: "#FFFA4D", fontSize: 40, fontWeight: 'bold',marginTop: 200 }}>Login as</Text>
                     <View style={{
                         marginTop: 70, width: "100%", alignItems: "center",
                         justifyContent: "center", height: "30%"
                     }}>
                         <TouchableOpacity activeOpacity={0.5} onPress={() => {
                             setLoginType(0)//0 for user
-                        }} style={{ backgroundColor: "purple", width: "70%", height: "27%", borderRadius: 15, alignItems: "center", justifyContent: "center", marginBottom: 50 }}><Text style={{ color: "#ffffff", fontSize: 24, fontWeight: "bold" }}>User</Text></TouchableOpacity>
+                        }} style={{ backgroundColor: "#5e72eb", width: "70%", height: "27%", borderRadius: 25, alignItems: "center", justifyContent: "center", marginBottom: 50 }}><Text style={{ color: "#FFFFFF", fontSize: 30, fontWeight: "bold" }}>User</Text></TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5} onPress={() => {
                             setLoginType(1)//1 for technician
-                        }} style={{ backgroundColor: "purple", width: "70%", height: "27%", borderRadius: 15, alignItems: "center", justifyContent: "center" }}><Text style={{ color: "#ffffff", fontSize: 24, fontWeight: "bold" }}>Technician</Text></TouchableOpacity>
+                        }} style={{ backgroundColor: "#5e72eb", width: "70%", height: "27%", borderRadius: 25, alignItems: "center", justifyContent: "center" }}><Text style={{ color: "#FFFFFF", fontSize: 30, fontWeight: "bold" }}>Technician</Text></TouchableOpacity>
                     </View>
                 </>
 
@@ -73,4 +76,7 @@ const Login = ({ path, navigate }) => {
         </View>
     );
 }
+const styles = StyleSheet.create({
+    
+})
 export default Login;
