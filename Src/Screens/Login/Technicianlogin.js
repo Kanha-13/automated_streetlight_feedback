@@ -6,7 +6,7 @@ const TechnicianLogin = ({ onBack }) => {
         <View>
             <Pressable onPress={onBack}><Text style={{ color: "#000000" }}> &#60; </Text>
             </Pressable>
-            <Text style={{ color: "#000000" }}>Technician Login</Text>
+            <Text style={{ color: "#000000", fontSize: 60 }}>Technician Login</Text>
         </View>
     );
 

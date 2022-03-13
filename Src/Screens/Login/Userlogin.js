@@ -42,8 +42,8 @@ const UserLogin = ({ onBack, navigate }) => {
     return (
         <View style={{ height: "100%", width: "100%", paddingHorizontal: 10, }}>
             <View style={{ width: "100%", flexDirection: "row", alignItems: "center", marginTop: 15, marginBottom: 70 }}>
-                <Pressable onPress={onBack} style={{ marginRight: 90 }}><Text style={{ fontSize: 30, color: "#000000" }}> &#60; </Text></Pressable>
-                <Text style={{ color: "#000000", fontSize: 25 }}>User Login</Text>
+                <Pressable onPress={onBack} style={{ marginRight: 90 }}><Text style={{ fontSize: 30, color: "#ded9ee" }}> &#10232; </Text></Pressable>
+                <Text style={{ color: "#ded9ee", fontSize: 25 }}>User Login</Text>
             </View>
             {
                 !mobileNUmber && <MobileNumber onSend={onSendOtp} />
