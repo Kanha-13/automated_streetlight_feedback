@@ -16,7 +16,7 @@ const Login = ({ path, navigate }) => {
         try {
             auth().onAuthStateChanged((user) => {
                 if (user) {
-                    navigate('UserHome')
+                    navigate('UserInfo')
                 }
                 else {
                     setLoginType(-1)
