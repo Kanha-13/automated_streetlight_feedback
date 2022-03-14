@@ -19,7 +19,7 @@ const MobileNumber = ({ onSend }) => {
             {error && <Text style={{ color: "red" }}>Enter a valid number</Text>}
             <Pressable onPress={checkValid} style={{
                 height: 60, borderRadius: 15,
-                justifyContent: "center", alignItems: "center", backgroundColor: "purple",
+                justifyContent: "center", alignItems: "center", backgroundColor: "#5e72eb",
                 width: "40%", marginTop: 20
             }}><Text style={{ color: "#FFFFFF", fontSize: 23 }}>Send Otp</Text></Pressable>
         </View>

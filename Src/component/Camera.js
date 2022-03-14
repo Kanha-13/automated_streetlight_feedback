@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Pressable, PermissionsAndroid } from 'react-nat
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
 import { Image } from 'react-native'
-export default function Camera() {
+export default function Camera({ navigate, onConfirm }) {
     const [{ cameraRef }, { takePicture }] = useCamera(null)
     const [imageUri, setImageUri] = useState(null)
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function Camera() {
     const camptureHandel = async () => {
         try {
             const data = await takePicture();
-            setImageUri(data.uri)
+            setImageUri(data)
         } catch (error) {
             console.log(error.message)
         }
@@ -34,18 +34,25 @@ export default function Camera() {
                 type={RNCamera.Constants.Type.back}
                 style={styles.preview}
             >
-                <Pressable style={{ backgroundColor: "purple", width: 60, height: 60 }} onPress={camptureHandel}><Text>Snap</Text></Pressable>
+                <Pressable style={{
+                    marginBottom: 20, borderRadius: 50,
+                    backgroundColor: "#ffffff", width: 80, height: 80,
+                }} onPress={camptureHandel}></Pressable>
             </RNCamera>}
 
             {imageUri !== null &&
                 <View style={{
-                    backgroundColor: "red", alignItems: 'center',
-                    justifyContent: "space-evenly", height: "60%"
+                    alignItems: 'center',
+                    justifyContent: "center", height: "100%"
                 }}>
-                    <Image style={{ height: "50%", width: "80%" }} source={{ uri: imageUri }} />
+                    <Image style={{ height: "80%", width: "90%" }} source={{ uri: imageUri.uri }} />
                     <Pressable onPress={() => {
                         setImageUri(null)
-                    }} style={{ borderRadius: 10, alignItems: "center", justifyContent: "center", backgroundColor: 'purple', width: 60, height: 60 }}><Text>Retake</Text></Pressable>
+                    }} style={{ marginTop: 20, borderRadius: 10, alignItems: "center", justifyContent: "center", backgroundColor: '#5e72eb', width: 160, height: 60 }}><Text style={{ color: "#ffffff", fontSize: 20, fontWeight: "bold" }}>Retake</Text></Pressable>
+                    <Pressable onPress={() => {
+                        onConfirm(imageUri)
+                        navigate('RegisterCompalin')
+                    }} style={{ marginTop: 20, borderRadius: 10, alignItems: "center", justifyContent: "center", backgroundColor: '#5e72eb', width: 160, height: 60 }}><Text style={{ color: "#ffffff", fontSize: 20, fontWeight: "bold" }}>Confirm</Text></Pressable>
                 </View>
             }
         </View>

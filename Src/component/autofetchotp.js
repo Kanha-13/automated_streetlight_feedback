@@ -1,4 +1,4 @@
-import RNOtpVerify from 'react-native-otp-verify';
+// import RNOtpVerify from 'react-native-otp-verify';
 export const autoFetchOtp = () => {
     RNOtpVerify.getOtp().then(p => RNOtpVerify.addListener(message => {
         try {

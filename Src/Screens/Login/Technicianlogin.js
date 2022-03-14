@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import MobileNumber from "../../component/MobileNumber";
 import Otp from "../../component/Otp";
+import { checkUser } from "../../Utils/checkUser";
 import { sendOtp } from "./api";
+import auth from '@react-native-firebase/auth';
+import LoadingIcon from '../../component/Images/loading.png'
 
 const TechnicianLogin = ({ onBack, navigate }) => {
     const [mobileNUmber, setMobileNumber] = useState(null)
@@ -21,35 +24,39 @@ const TechnicianLogin = ({ onBack, navigate }) => {
         try {
             let login = await confirm.confirm(otp)
             if (login) {
-                navigate('UserHome')
-                let user = login.user
-                console.log("user=====>", user)
-                console.log("login=====>", login)
-                let userData = {
-                    uid: user.uid,
-                    // name: userDetails.name,
-                    // email: userDetails.email,
-                    // mobileNumber: userDetails.mobileNumber,
-                }
+                checkUser(mobileNUmber, navigate, 1);
             }
         } catch (err) {
             showMessage({ text: `Error: ${err.message}`, color: 'red' });
             setCounter(0)
+
         }
     }
-
+    useEffect(() => {
+        auth().onAuthStateChanged((user) => {
+            if (user) {
+                checkUser(user.phoneNumber, navigate, 1)
+            }
+            else {
+                // setLoginType(-1)
+            }
+        });
+    }, [])
     return (
         <View style={{ height: "100%", width: "100%", paddingHorizontal: 10, }}>
             <View style={{ width: "100%", flexDirection: "row", alignItems: "center", marginTop: 15, marginBottom: 70 }}>
-                <Pressable onPress={onBack} style={{ marginRight: 90 }}><Text style={{ fontSize: 30, color: "#000000" }}> &#60; </Text></Pressable>
+                <Pressable onPress={onBack} style={{ marginRight: 90 }}><Text style={{ fontSize: 30, color: "#000000" }}> &#10232; </Text></Pressable>
                 <Text style={{ color: "#000000", fontSize: 25 }}>Technician Login</Text>
             </View>
             {
                 !mobileNUmber && <MobileNumber onSend={onSendOtp} />
             }
             {
-                mobileNUmber &&
+                confirm && mobileNUmber &&
                 <Otp otpVerify={handelOtpVerify} sendOTP={sendOtp} message={message} counter={counter} setCounter={setCounter} />
+            }
+            {
+                confirm === null && mobileNUmber && <Image style={{ marginTop: 150, marginLeft: 150, height: 90, width: 90 }} source={LoadingIcon} />
             }
         </View>
     );

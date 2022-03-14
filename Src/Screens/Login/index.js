@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text, StyleSheet, ImageBackground } from "react
 import TechnicianLogin from "./Technicianlogin";
 import UserLogin from "./Userlogin";
 import auth from '@react-native-firebase/auth';
-
+import { checkUser } from '../../Utils/checkUser'
 
 const image = { uri: "https://reactjs.org/logo-og.png" }
 
@@ -12,30 +12,12 @@ const Login = ({ path, navigate }) => {
     const goBack = () => {
         setLoginType(-1)
     }
-    const checkUser = async (number) => {
-        const res = await fetch(`http://192.168.29.59:8002/user/${number}`)
-        const userExist = await res.json()
-        if (userExist) {
-            if (userExist.employeId) {
-                navigate('TechnicianHome')
-            } else {
-                navigate('UserHome')
-            }
-        } else {
-            if (LoginType) {
-                console.log("deteail not available")
-                navigate("TechnicianInfo")
-            } else {
-                console.log("deteail not available")
-                navigate("UserInfo")
-            }
-        }
-    }
+
     useEffect(() => {
         try {
             auth().onAuthStateChanged((user) => {
                 if (user) {
-                    checkUser(user.phoneNumber)
+                    checkUser(user.phoneNumber, navigate, LoginType)
                 }
                 else {
                     setLoginType(-1)
@@ -47,12 +29,12 @@ const Login = ({ path, navigate }) => {
     }, [])
     return (
         <View style={{
-            backgroundColor: "#120c6e", height: '100%',
+            backgroundColor: "#FFFFFF", height: '100%',
             alignItems: "center"
         }}>{
                 LoginType === -1 &&
                 <>
-                    <Text style={{ color: "#FFFA4D", fontSize: 40, fontWeight: 'bold',marginTop: 200 }}>Login as</Text>
+                    <Text style={{ color: "#000000", fontSize: 40, fontWeight: 'bold', marginTop: 200 }}>Login as</Text>
                     <View style={{
                         marginTop: 70, width: "100%", alignItems: "center",
                         justifyContent: "center", height: "30%"
@@ -77,6 +59,6 @@ const Login = ({ path, navigate }) => {
     );
 }
 const styles = StyleSheet.create({
-    
+
 })
 export default Login;

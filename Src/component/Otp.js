@@ -94,14 +94,14 @@ const Otp = ({ otpVerify, sendOTP, message, counter, setCounter }) => {
                 {message.text}
             </Text>
             }
-            {counter > 0 && <Text style={{ color: "purple", marginBottom: 20 }}> Resend OTP in 00:{counter < 10 && "0"}{counter}</Text>}
+            {counter > 0 && <Text style={{ color: "#5e72eb", marginBottom: 20 }}> Resend OTP in 00:{counter < 10 && "0"}{counter}</Text>}
             <Pressable
                 onPress={() => {
                     sendOTP();
                     setCounter(59)
                 }}
                 disabled={counter > 0 ? true : false}
-                style={{ backgroundColor: "purple", width: "40%", height: 60, alignItems: "center", justifyContent: "center", borderRadius: 10 }}>
+                style={{ backgroundColor: "#5e72eb", width: "40%", height: 60, alignItems: "center", justifyContent: "center", borderRadius: 10 }}>
                 <Text style={{ color: "#ffffff", textAlign: "center", fontSize: 20 }}>Re-Send</Text>
             </Pressable>
 
@@ -115,7 +115,7 @@ const Otp = ({ otpVerify, sendOTP, message, counter, setCounter }) => {
                         otpVerify(otp.d1 + otp.d2 + otp.d3 + otp.d4 + otp.d5 + otp.d6)
                     }
                 }}
-                style={{ backgroundColor: "purple", width: "40%", borderRadius: 10, marginTop: "2%", height: 60, justifyContent: "center" }}>
+                style={{ backgroundColor: "#5e72eb", width: "40%", borderRadius: 10, marginTop: "2%", height: 60, justifyContent: "center" }}>
                 <Text style={{ color: "#ffffff", textAlign: "center", fontSize: 20 }}>Verify</Text>
             </Pressable>
         </View>
