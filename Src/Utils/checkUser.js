@@ -1,5 +1,5 @@
 export const checkUser = async (number, navigate, LoginType) => {
-    const res = await fetch(`http://192.168.136.190:8002/user/${number.substring(1)}`)
+    const res = await fetch(`http://192.168.29.59:8002/user/${number.substring(1)}`)
     console.log("got response")
     const userExist = await res.json()
     console.log(userExist)

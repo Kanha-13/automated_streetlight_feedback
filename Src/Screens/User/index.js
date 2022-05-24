@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
 import Geolocation from "@react-native-community/geolocation";
 import settingIcon from '../../component/Images/settingIcon.png'
+import ListIcon from '../../component/Images/ListIcon.png'
+import FormFillIcon from '../../component/Images/FormFillIcon.png'
 const UserHome = ({ navigate }) => {
   return (
     <View style={{ height: '100%', backgroundColor: 'white' }}>
@@ -26,28 +28,14 @@ const UserHome = ({ navigate }) => {
       </View>
       <View style={styles.container}>
         <Pressable style={styles.btn} onPress={() => navigate('UserComplaintList')}>
-          <Text style={styles.btnText}>List Of Complaints</Text>
+          <Image style={{ resizeMode: "contain", width: 120 }} source={ListIcon} />
+          <Text style={styles.btnText}>List of Complaints</Text>
         </Pressable>
         <Pressable style={styles.btn} onPress={() => navigate('Camera')}>
-          <Text style={styles.btnText}>File A Complaint</Text>
+          <Image style={{ resizeMode: "contain", width: 150 }} source={FormFillIcon} />
+          <Text style={styles.btnText}>File a Complaint</Text>
         </Pressable>
       </View>
-      {/* <Pressable
-                style={{
-                    position: 'relative',
-                    bottom: 0,
-                    paddingLeft: 20,
-                    paddingBottom: 12,
-                    width: '100%',
-                    backgroundColor: 'white',
-                    paddingTop: 10
-                }}
-                onPress={() => navigate('UserInfo')}>
-                <Image
-                    source={require('../../component/Images/backButton.png')}
-                    style={{ height: 40, width: 40 }}
-                />
-            </Pressable> */}
     </View>
   );
 };
@@ -62,10 +50,11 @@ const styles = StyleSheet.create({
   btn: {
     color: 'black',
     backgroundColor: '#5e72eb',
-    height: 60,
+    flexDirection: "row",
+    height: 220,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 80,
+    marginBottom: 40,
     borderRadius: 7
   },
   btnText: {

@@ -31,29 +31,30 @@ const TechnicianInfo = ({ navigate }) => {
         }
     }
     return (
-        <ScrollView style={{ height: '100%', backgroundColor: '#ffffff' }} contentContainerStyle={{ paddingHorizontal: 10 }}>
-            <Text style={{ color: '#000000', fontSize: 26, fontWeight: "bold", marginTop: 50 }}>Technician Info</Text>
+        <ScrollView style={{ height: '100%', paddingBottom: 30, backgroundColor: '#ffffff' }} contentContainerStyle={{ paddingHorizontal: 10 }}>
+            <Text style={{ color: '#000000', marginBottom: 30, fontSize: 26, fontWeight: "bold", marginTop: 50 }}>Technician Info</Text>
             <Text style={styles.label}>Name</Text>
             <TextInput
                 placeholderTextColor="#000000"
                 style={styles.input}
-                placeholder="Enter Your Name Here"
+                placeholder="Enter Your Name"
                 onChangeText={newText => setname(newText)}
             />
             <Text style={styles.label}>Email</Text>
             <TextInput
                 placeholderTextColor="#000000"
                 style={styles.input}
-                placeholder="Enter Your Email Here"
+                placeholder="Enter Your Email"
                 onChangeText={newText => setemail(newText)}
             />
             <Text style={styles.label}>Address</Text>
             <TextInput
                 placeholderTextColor="#000000"
                 style={styles.input}
-                placeholder="Enter Your Office Address Here"
+                placeholder="Enter Your Office Address"
                 onChangeText={newText => setaddress(newText)}
             />
+            <Text style={styles.label}>Employee Id</Text>
             <TextInput
                 placeholderTextColor="#000000"
                 style={styles.input}

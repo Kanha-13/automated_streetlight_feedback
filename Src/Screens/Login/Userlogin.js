@@ -26,6 +26,7 @@ const UserLogin = ({ onBack, navigate }) => {
                 // checkUser(mobileNUmber, navigate, 0);
             }
         } catch (err) {
+            console.log(err.message)
             showMessage({ text: `Error: ${err.message}`, color: 'red' });
             setCounter(0)
         }

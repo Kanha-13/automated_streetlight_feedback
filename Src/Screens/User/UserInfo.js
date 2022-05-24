@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, TextInput, StyleSheet, Image } from 'react-native';
+import { View, Text, Pressable, TextInput, StyleSheet, Image, ScrollView } from 'react-native';
 import { addUser } from '../../Utils/addUser';
 import auth from '@react-native-firebase/auth';
 const UserInfo = ({ navigate }) => {
@@ -15,12 +15,14 @@ const UserInfo = ({ navigate }) => {
   }, [])
   const [name, setname] = useState("")
   const [email, setemail] = useState("")
-  const [address, setaddress] = useState("")
+  const [state, setState] = useState("")
+  const [city, setCity] = useState("")
+  const [locality, setLocality] = useState("")
   const handelSubmit = async () => {
-    if (name === "" || email === "" || address === "") {
+    if (name === "" || email === "" || state === "" || city === "" || locality === "") {
       alert("Please fill all the field")
     } else {
-      const res = await addUser({ name: name, email: email, mobileNumber: number, fireBaseId: firebaseId, address: address, type: 0 })
+      const res = await addUser({ name: name, email: email, mobileNumber: number, fireBaseId: firebaseId, address: { city: city, state: state, locality: locality }, type: 0 })
       console.log(await res.json())
       if (res) {
         navigate('UserHome')
@@ -30,44 +32,53 @@ const UserInfo = ({ navigate }) => {
     }
   }
   return (
-    <View style={{ height: '100%', backgroundColor: '#ffffff' }}>
-      <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: 12, borderWidth: 2 }}>
+    <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 20 }} style={{ flex: 1, height: '100%', backgroundColor: '#ffffff' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 12 }}>
         <Text style={{ color: '#000000', fontSize: 26, fontWeight: "bold" }}>User Info</Text>
       </View>
-      <View style={styles.userInp}>
-        <Text style={styles.label}>Name</Text>
-        <TextInput
-          placeholderTextColor="#000000"
-          style={styles.input}
-          placeholder="Enter Your Name Here"
-          onChangeText={newText => setname(newText)}
-        />
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          placeholderTextColor="#000000"
-          style={styles.input}
-          placeholder="Enter Your Email Here"
-          onChangeText={newText => setemail(newText)}
-        />
-        <Text style={styles.label}>Address</Text>
-        <TextInput
-          placeholderTextColor="#000000"
-          style={styles.input}
-          placeholder="Enter Your Office Address Here"
-          onChangeText={newText => setaddress(newText)}
-        />
-        <Pressable style={styles.btn} onPress={handelSubmit}>
-          <Text style={styles.btnText}>Continue</Text>
-        </Pressable>
-      </View>
-    </View>
+      <View style={{ marginBottom: 30, borderBottomColor: "gray", borderBottomWidth: 1, width: "95%", alignSelf: "center" }}></View>
+      <Text style={styles.label}>Name</Text>
+      <TextInput
+        placeholderTextColor="#000000"
+        style={styles.input}
+        placeholder="Enter Your Name Here"
+        onChangeText={newText => setname(newText)}
+      />
+      <Text style={styles.label}>Email</Text>
+      <TextInput
+        placeholderTextColor="#000000"
+        style={styles.input}
+        placeholder="Enter Your Email Here"
+        onChangeText={newText => setemail(newText)}
+      />
+      <Text style={styles.label}>State</Text>
+      <TextInput
+        placeholderTextColor="#000000"
+        style={styles.input}
+        placeholder="Enter Your State"
+        onChangeText={newText => setState(newText)}
+      />
+      <Text style={styles.label}>City</Text>
+      <TextInput placeholder='Enter City'
+        placeholderTextColor="#000000"
+        style={[styles.input, { padding: 0 }]}
+        onChangeText={newText => setCity(newText)}
+      />
+      <Text style={styles.label}>Locality</Text>
+      <TextInput
+        placeholderTextColor="#000000"
+        style={styles.input}
+        placeholder="Enter Your Locality"
+        onChangeText={newText => setLocality(newText)}
+      />
+      <Pressable style={styles.btn} onPress={handelSubmit}>
+        <Text style={styles.btnText}>Continue</Text>
+      </Pressable>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
   userInp: {
-    height: '80%',
-    justifyContent: 'center',
-    display: 'flex',
     padding: 12,
   },
   label: {

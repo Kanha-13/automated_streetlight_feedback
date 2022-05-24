@@ -34,6 +34,9 @@ export default function Camera({ navigate, onConfirm }) {
                 type={RNCamera.Constants.Type.back}
                 style={styles.preview}
             >
+                <View style={{ marginBottom: 20 }}>
+                    <Text style={{ fontSize: 20, fontWeight: "bold", color: "red" }}>Click Image of functional street light</Text>
+                </View>
                 <Pressable style={{
                     marginBottom: 20, borderRadius: 50,
                     backgroundColor: "#ffffff", width: 80, height: 80,

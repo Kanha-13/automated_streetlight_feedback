@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
 import Geolocation from "@react-native-community/geolocation";
 import settingIcon from '../../component/Images/settingIcon.png'
+import ListIcon from '../../component/Images/ListIcon.png'
+import fixIcon from '../../component/Images/fixIcon.png'
 const TechnicianHome = ({ navigate }) => {
   return (
     <View style={{ height: '100%', backgroundColor: 'white' }}>
@@ -26,28 +28,14 @@ const TechnicianHome = ({ navigate }) => {
       </View>
       <View style={styles.container}>
         <Pressable style={styles.btn} onPress={() => navigate('UserComplaintList')}>
+          <Image style={{ width: 130, resizeMode: "contain" }} source={ListIcon} />
           <Text style={styles.btnText}>List Of Complaints</Text>
         </Pressable>
         <Pressable style={styles.btn} onPress={() => navigate('Camera')}>
+          <Image style={{ width: 110, resizeMode: "contain" }} source={fixIcon} />
           <Text style={styles.btnText}>Resolve a Complain</Text>
         </Pressable>
       </View>
-      {/* <Pressable
-                style={{
-                    position: 'relative',
-                    bottom: 0,
-                    paddingLeft: 20,
-                    paddingBottom: 12,
-                    width: '100%',
-                    backgroundColor: 'white',
-                    paddingTop: 10
-                }}
-                onPress={() => navigate('UserInfo')}>
-                <Image
-                    source={require('../../component/Images/backButton.png')}
-                    style={{ height: 40, width: 40 }}
-                />
-            </Pressable> */}
     </View>
   );
 };
@@ -65,8 +53,10 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 80,
-    borderRadius: 7
+    marginBottom: 40,
+    borderRadius: 7,
+    height: 220,
+    flexDirection: "row"
   },
   btnText: {
     textAlign: 'center',
